@@ -165,7 +165,7 @@ footer {margin: 5em 0}
 
 html{
     /* This image will be displayed fullscreen */
-    background:url('assets/madeira_fundo.png') no-repeat center center;
+    /*background:url('assets/madeira_fundo.png') no-repeat center center;*/
 
     /* Ensure the html element always takes up the full height of the browser window */
     min-height:100%;
