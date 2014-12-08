@@ -1,0 +1,8 @@
+development:
+    GITHUB_TOKEN: 
+
+test:
+    GITHUB_TOKEN: 
+
+production:
+    GITHUB_TOKEN: 
