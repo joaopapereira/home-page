@@ -159,6 +159,9 @@ footer {margin: 5em 0}
 .jumbotron h2, .jumbotron .h2 {
 	color: #F38630;
 }
+.jumbotron h3, .jumbotron .h3 {
+	color: #F38630;
+}
 
 html{
     /* This image will be displayed fullscreen */
