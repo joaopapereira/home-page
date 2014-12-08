@@ -1,0 +1,7 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_update: 2014-12-06
+
+two:
+  last_update: 2014-12-06
