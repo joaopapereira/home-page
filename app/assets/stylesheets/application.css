@@ -137,15 +137,7 @@ footer {margin: 5em 0}
 
 	.section-preview .lead {margin-bottom: 2em}
 
-@media (max-width:767px) {.section-preview .image img}
 
-{}
-
-	.sponsor {text-align: center}
-
-		.sponsor a:hover {text-decoration: none}
-
-@media (max-width:767px) {.splash}
 
 .splash .logo {width: 100px}
 
