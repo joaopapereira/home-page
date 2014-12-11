@@ -1,6 +1,11 @@
 class GitHubInfo < ActiveRecord::Base
     has_many :git_hub_repo
-    
+    def load_repos
+      if last_update != Date.today then
+        repo_info = retrieve_from_github
+      end
+      GitHubRepo.all
+    end
     def retrieve_from_github
         @client ||= Octokit::Client.new :access_token =>  ENV["GITHUB_TOKEN"]
         language_obj = {}
