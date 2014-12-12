@@ -3,6 +3,12 @@ class GitHubInfo < ActiveRecord::Base
     def load_repos
       if last_update != Date.today then
         repo_info = retrieve_from_github
+        repo_info.each_pair do |repo_name, repo_stats|
+          repo = GitHubRepo.find_by_name repo_name
+          repo = GitHubRepo.new(:name => repo_name) if repo == nil
+          repo.retrieve_from_hash repo_stats
+          repo.save
+        end
       end
       GitHubRepo.all
     end
