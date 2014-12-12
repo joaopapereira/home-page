@@ -66,6 +66,31 @@ RSpec.describe GitHubRepo, :type => :model do
                 expect(repo.repo_languages.first.programming_language.name).to eq @lang_perl.name
                 expect(repo.repo_languages.first.number_lines).to eq 5
             end
+            it "##Real example" do
+                repo = GitHubRepo.new(:name => "T1")
+                repo.retrieve_from_hash({:languages=>{:"C++"=>446519, :Shell=>134, :Perl=>330, 
+                                                      :JavaScript=>20351, :Ruby=>58608, :CoffeeScript=>844, 
+                                                      :CSS=>1860, :PHP=>20984, :Python=>1423}, 
+                                         :num_commits=>30, 
+                                         :last_commit=>Time.parse('2014-10-15 19:02:06 UTC')})
+                repo.save
+                cpp_lang = FactoryGirl.build(:programming_language, :name => "C++")
+                shell_lang = FactoryGirl.build(:programming_language, :name => "Shell")
+                perl_lang = FactoryGirl.build(:programming_language, :name => "Perl")
+                javascript_lang = FactoryGirl.build(:programming_language, :name => "JavaScript")
+                ruby_lang = FactoryGirl.build(:programming_language, :name => "Ruby")
+                coffeescript_lang = FactoryGirl.build(:programming_language, :name => "CoffeeScript")
+                css_lang = FactoryGirl.build(:programming_language, :name => "CSS")
+                php_lang = FactoryGirl.build(:programming_language, :name => "PHP")
+                python_lang = FactoryGirl.build(:programming_language, :name => "Python")
+                
+                expect(repo.name).to eq "T1"
+                expect(repo.repo_languages.length).to eq 9
+                expect(repo.repo_languages.first.programming_language.name).to eq cpp_lang.name
+                expect(repo.repo_languages.first.number_lines).to eq 446519
+                expect(repo.num_commits).to eq 30
+                expect(repo.last_commit).to eq Time.parse('2014-10-15 19:02:06 UTC')
+            end
         end
     end
 end

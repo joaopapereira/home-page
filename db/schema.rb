@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141205184518) do
   create_table "git_hub_repos", force: true do |t|
     t.string   "name"
     t.integer  "num_commits"
-    t.date     "last_commit"
+    t.datetime     "last_commit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

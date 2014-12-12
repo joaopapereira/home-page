@@ -7,8 +7,8 @@ class GitHubRepo < ActiveRecord::Base
                if :languages == key then
                     repo_languages.delete_all
                     values.each_pair do |language_name, number_lines|
-                         language = ProgrammingLanguage.find_by_name language_name
-                         language = ProgrammingLanguage.new :name => language_name if language == nil
+                         language = ProgrammingLanguage.find_by_name language_name.to_s
+                         language = ProgrammingLanguage.new :name => language_name.to_s if language == nil
                          lang_metric = RepoLanguage.new 
                          lang_metric.programming_language = language
                          lang_metric.number_lines = number_lines
@@ -18,5 +18,7 @@ class GitHubRepo < ActiveRecord::Base
                     send("#{key}=",values) if has_attribute? key
                end
           end
+     end
+     def languages_to_json
      end
 end

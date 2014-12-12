@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    puts GitHubInfo.instance.load_repos
   end
 
   def about
