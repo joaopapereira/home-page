@@ -21,11 +21,11 @@
 
 
 // Load the Visualization API and the piechart package.
-//google.load('visualization', '1.0', {'packages':['corechart']});
+google.load('visualization', '1.0', {'packages':['corechart']});
 
 // Set a callback to run when the Google Visualization API is loaded.
 //google.setOnLoadCallback(drawChart);
-//google.setOnLoadCallback(readChart);
+google.setOnLoadCallback(readChart);
 
 // Callback that creates and populates a data table,
 // instantiates the pie chart, passes in the data and
@@ -69,7 +69,7 @@ function drawChart1(_all_rows, where, title, width, height, backgroundColor) {
   data.addRows(_all_rows);
 
   // Set chart options
-  var options = {'title':'Skill Level',
+  var options = {'title': title,
                  'width':400,
                  'height':300,
                  'backgroundColor': '#C8C8A9'
@@ -80,7 +80,14 @@ function drawChart1(_all_rows, where, title, width, height, backgroundColor) {
   chart.draw(data, options);
 }
 function onSuccess(data){
-  drawChart1(data, 'chart_div', 'Skill Level',
+  console.log(data);
+  var output = [];
+  Object.keys(data).forEach(function (key) { 
+      var value = data[key];
+      output.push([key, value]);
+  })
+  
+  drawChart1(output, 'chart_div', 'Github repository languages',
                                 400,
                                 300,
                                 '#C8C8A9');

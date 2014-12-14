@@ -42,6 +42,10 @@ gem 'faraday-http-cache'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 

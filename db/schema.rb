@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206191046) do
+ActiveRecord::Schema.define(version: 20141205184518) do
 
   create_table "git_hub_infos", force: true do |t|
     t.date     "last_update"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20141206191046) do
   create_table "git_hub_repos", force: true do |t|
     t.string   "name"
     t.integer  "num_commits"
-    t.date     "last_commit"
+    t.datetime     "last_commit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(version: 20141206191046) do
 
   create_table "repo_languages", force: true do |t|
     t.integer  "git_hub_repo_id"
-    t.integer  "programming_languages_id"
+    t.integer  "programming_language_id"
     t.integer  "number_lines"
+    t.integer  "other_info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

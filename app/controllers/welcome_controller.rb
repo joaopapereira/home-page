@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
   def index
+    GitHubInfo.instance.load_repos
   end
 
   def about
@@ -22,7 +23,10 @@ class WelcomeController < ApplicationController
                     ['Database', 4]]
     @json_data = @json_data.sort_by {|skill_level| skill_level[0]}
     respond_to do |format|
-      format.js { render :json => @json_data }
+      #format.js { render :json => @json_data }
+      format.js { render :json => GitHubInfo.instance.all_languages_lines}
+    end
+    GitHubInfo.instance.load_repos.each do |repo|
     end
   end
 end

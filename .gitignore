@@ -15,6 +15,16 @@
 /log/*.log
 /tmp
 
+# Ignore application configuration
+#/config/application.yml
+.env
 
+# Versioning
+.rvmrc.env
+.rvmrc
+.ruby-version
+.ruby-gemset
 
+# Ignore Precompiled Assets
+public/assets/**
 config/website.yml
