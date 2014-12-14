@@ -1,5 +1,5 @@
 class GitHubRepo < ActiveRecord::Base
-     has_many :repo_languages
+     has_many :repo_languages, dependent: :destroy
      has_many :programming_languages, through: :repo_languages
      def retrieve_from_hash repo_stats
           return if repo_stats.length == 0
@@ -18,7 +18,13 @@ class GitHubRepo < ActiveRecord::Base
                     send("#{key}=",values) if has_attribute? key
                end
           end
+          save
      end
      def languages_to_json
+          _json = {}
+          repo_languages.each do |repo_lang|
+               _json[repo_lang.programming_language.name] = repo_lang.number_lines
+          end
+          _json
      end
 end

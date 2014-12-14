@@ -10,6 +10,7 @@ class GitHubInfo < ActiveRecord::Base
         repo_info.each_pair do |repo_name, repo_stats|
           repo = GitHubRepo.find_by_name repo_name
           repo = GitHubRepo.new(:name => repo_name) if repo == nil
+          Rails.logger.info "stats: #{repo_stats}"
           repo.retrieve_from_hash repo_stats
           repo.save
         end
@@ -18,12 +19,24 @@ class GitHubInfo < ActiveRecord::Base
       end
       GitHubRepo.all
     end
+    def all_languages_lines
+      all_lines = Hash.new(0)
+      all_repos = load_repos
+      all_repos.each do |repo|
+        lines = repo.languages_to_json
+        lines.each_pair do |lang_name, num_lines|
+          all_lines[lang_name] += num_lines
+        end
+      end
+      all_lines
+    end
     def retrieve_from_github
         @client ||= Octokit::Client.new :access_token =>  ENV["GITHUB_TOKEN"]
         repositories = {}
         language_obj = {}
         @client.repos.each do |repo|
           repositories[repo.name] = {}
+          language_obj = {}
           @client.languages(("#{@client.login}/#{repo.name}")).each do |lang_name, lines|
               if !language_obj[lang_name]
                 language_obj[lang_name] = lines
@@ -36,11 +49,6 @@ class GitHubInfo < ActiveRecord::Base
           repositories[repo.name][:num_commits] = all_commits.length
           repositories[repo.name][:last_commit] = all_commits.first.commit.author.date
         end
-        @language_lines = "["
-        language_obj.each do |lang_name, lines|
-          @language_lines += "[\"#{lang_name.to_s}\", #{lines}],"
-        end
-        @language_lines += "]"
         return repositories
     end
 end

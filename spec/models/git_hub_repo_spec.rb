@@ -93,4 +93,13 @@ RSpec.describe GitHubRepo, :type => :model do
             end
         end
     end
+    describe "languages_to_json" do
+        it "##Simple retrieve" do
+            repo = GitHubRepo.new(:name => "T1")
+            repo.retrieve_from_hash({:languages=>{"C++" => 10, "Perl" => 20}, :num_commits => 50, :strange_input=>"bamm"})
+            new_lang = FactoryGirl.build(:programming_language, :name => "C++")
+            expected_value = {"C++" => 10, "Perl" => 20}
+            expect(repo.languages_to_json).to eq expected_value
+        end
+    end
 end

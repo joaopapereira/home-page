@@ -44,4 +44,20 @@ RSpec.describe GitHubInfo, :type => :model do
         end
     end
   end
+  describe "Lines from repos" do
+    before do
+      @info = FactoryGirl.build(:git_hub_info, :last_update => Date.today-1)
+    end
+    it "#retrieve correctly all lines" do
+      values = { 
+          "Repo1" => {"c++" => 1000, "perl" => 200},
+          "Repo2" => {"perl" => 300, "python" => 10},
+          "Repo3" => {"C" => 500, "perl" => 10},
+      }
+      expect(@info).to receive(:retrieve_from_github).exactly(:once) {values}
+      all_lines = @info.all_languages_lines
+      expected_value = {"c++"=>1000, "perl" => 510, "python" => 10, "C" => 500}
+      #expect(all_lines).to eq expected_value
+    end
+  end
 end
