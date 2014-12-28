@@ -46,6 +46,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
+
+gem 'geoip', '~> 1.4.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
