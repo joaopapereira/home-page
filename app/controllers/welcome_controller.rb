@@ -1,10 +1,11 @@
 class WelcomeController < ApplicationController
   def index
     GitHubInfo.instance.load_repos
-    request.remote_ip
-    visitor = Visitor.new
-    visitor.set_ip_address request.remote_ip
-    visitor.save
+    if 0 < Visitor.find_today_by_ip_address(request.remote_ip)
+      visitor = Visitor.new
+      visitor.set_ip_address request.remote_ip
+      visitor.save
+    end
   end
 
   def about
