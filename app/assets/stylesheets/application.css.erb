@@ -53,8 +53,6 @@ body {padding-top: 50px; background-color: #A7DBD8;}
 	font-weight: bold
  }
 
-.nav-tabs {margin-bottom: 15px}
-
 .mynavbar{
         background-color: #69D2E7;
         border-color: transparent;
@@ -175,4 +173,33 @@ html{
 	margin-bottom: 60px;
 	position: relative;
 	width: max;
+}
+
+
+
+.nav-tabs::after{
+clear:none;
+}
+
+
+.nav-tabs > li > a:hover, a:focus, a:active {
+	border-style: none;
+    border-bottom-style: inset;
+    border-bottom-color: #E0E4CC;
+    background-color: transparent;
+}
+
+.dropdown-menu{
+    background-color: #A7DBD8;
+    border-color: transparent;
+	border-style: none;
+}
+.dropdown-menu > li > a:hover, a:focus, a:active {
+	border-style: none;
+    border-bottom-style: inset;
+    border-bottom-color: #E0E4CC;
+    background-color: transparent;
+}
+.dropdown-menu>li>a {
+	color: #428bca;
 }
