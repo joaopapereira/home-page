@@ -37,12 +37,16 @@ class GitHubInfo < ActiveRecord::Base
         @client.repos.each do |repo|
           repositories[repo.name] = {}
           language_obj = {}
-          @client.languages(("#{@client.login}/#{repo.name}")).each do |lang_name, lines|
-              if !language_obj[lang_name]
-                language_obj[lang_name] = lines
-              else
-                language_obj[lang_name] += lines
-              end
+          begin
+            @client.languages(("#{@client.login}/#{repo.name}")).each do |lang_name, lines|
+                if !language_obj[lang_name]
+                  language_obj[lang_name] = lines
+                else
+                  language_obj[lang_name] += lines
+                end
+            end
+          rescue  Exception => e  
+            logger.info "Unable to retrieve languages from #{repo.name}: #{e.message}"
           end
           repositories[repo.name][:languages] = language_obj
           all_commits = @client.commits("#{@client.login}/#{repo.name}")
