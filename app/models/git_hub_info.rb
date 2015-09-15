@@ -51,7 +51,7 @@ class GitHubInfo < ActiveRecord::Base
           repositories[repo.name][:languages] = language_obj
           
           repositories[repo.name][:num_commits] = 0
-          repositories[repo.name][:last_commit] = Date.now
+          repositories[repo.name][:last_commit] = Date.today
           begin 
             all_commits = @client.commits("#{@client.login}/#{repo.name}")
             
