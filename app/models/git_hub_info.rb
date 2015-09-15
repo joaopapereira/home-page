@@ -49,13 +49,17 @@ class GitHubInfo < ActiveRecord::Base
             logger.info "Unable to retrieve languages from #{repo.name}: #{e.message}"
           end
           repositories[repo.name][:languages] = language_obj
+          
+          repositories[repo.name][:num_commits] = 0
+          repositories[repo.name][:last_commit] = Date.now
           begin 
             all_commits = @client.commits("#{@client.login}/#{repo.name}")
+            
+            repositories[repo.name][:num_commits] = all_commits.length
+            repositories[repo.name][:last_commit] = all_commits.first.commit.author.date
           rescue  Exception => e  
             logger.info "Unable to retrieve commits from #{repo.name}: #{e.message}"
           end
-          repositories[repo.name][:num_commits] = all_commits.length
-          repositories[repo.name][:last_commit] = all_commits.first.commit.author.date
         end
         return repositories
     end
