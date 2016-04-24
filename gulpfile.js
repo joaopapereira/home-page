@@ -12,11 +12,14 @@ gulp.task('clean', function(){
 });
 
 gulp.task('build:server', function () {
-  var tsProject = ts.createProject(path.resolve('./server/tsconfig.json'));
-  	return gulp.src(path.resolve('./server/**/*.ts'))
-  		.pipe(ts(tsProject))
-  		.js
-  		.pipe(gulp.dest(path.resolve('./server')))
+	var tsProject = ts.createProject('server/tsconfig.json');
+    var tsResult = gulp.src('server/**/*.ts')
+		.pipe(sourcemaps.init())
+        .pipe(ts(tsProject))
+	return tsResult.js
+        .pipe(concat('server.js'))
+        .pipe(sourcemaps.write())
+		.pipe(gulp.dest('dist'))
 });
 
 
@@ -41,8 +44,10 @@ gulp.task('build:index', function(){
         .pipe(gulp.dest('dist/libs'))
 
     //Let's copy our index into dist
-    var copyIndex = gulp.src('client/index.html')
-        .pipe(gulp.dest('dist'))
+    //var copyIndex = gulp.src('client/index.html')
+    //    .pipe(gulp.dest('dist'))
+    var copyIndex = gulp.src(['app/**/*.html', 'index.html'], { base : './' })
+    .pipe(gulp.dest('dist'))
     return [copyJsNPMDependencies, copyIndex];
 });
 

@@ -1,6 +1,7 @@
 <html>
+
   <head>
-    <title>newfamily-example</title>
+    <title>Joao Pereira</title>
     <base href="/"/>
 
     <!-- 1. Load libraries -->
@@ -12,25 +13,22 @@
 
     <!-- 2. Configure SystemJS -->
     <script>
-        System.config({
-            baseUrl: "/",
-            packages: {
-                'client/app': {
-                    defaultExtension: 'js',
-                },
-                'rxjs': {
-                    defaultExtension: 'js'
-                }
-            },
-            map: {
-                "rxjs": "/node_modules/rxjs",
-        });
-        System.import('client/app/app.js');
+      System.config({
+        packages: {
+          app: {
+            format: 'register',
+            defaultExtension: 'js'
+          }
+        }
+      });
+      System.import('app/bootstrap')
+            .then(null, console.error.bind(console));
     </script>
+
   </head>
   <!-- 3. Display the application -->
   <body>
-    <my-app>Loading...</my-app>
+    <page-app>Loading...</page-app>
   </body>
 
 </html>
