@@ -1,0 +1,39 @@
+{
+  "name": "home-page",
+  "version": "1.0.0",
+  "description": "Basic home site\r Master: [![Build Status](https://travis-ci.org/joaopapereira/home-page.png?branch=master)](https://travis-ci.org/joaopapereira/home-page)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaopapereira/home-page.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaopapereira/home-page/issues"
+  },
+  "homepage": "https://github.com/joaopapereira/home-page#readme",
+  "dependencies": {
+    "angular2": "2.0.0-beta.15",
+    "es6-promise": "3.0.2",
+    "es6-shim": "0.33.3",
+    "express": "4.13.3",
+    "gulp-concat": "2.6.0",
+    "reflect-metadata": "0.1.2",
+    "rxjs": "5.0.0-beta.0",
+    "systemjs": "0.19.16",
+    "zone.js": "0.5.10"
+  },
+  "devDependencies": {
+    "del": "2.2.0",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-typescript": "2.10.0",
+    "run-sequence": "1.1.5"
+  }
+}
