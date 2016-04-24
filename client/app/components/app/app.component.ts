@@ -5,12 +5,12 @@ import {HomeComponent} from '../home/home.component'
 import {MenuComponent} from '../menu/menu.component'
 
 @RouteConfig([
-    {path: '/', component: HomeComponent, as: 'Home'},
+    {path: '/', component: HomeComponent, as: 'Home', useAsDefault: true},
 ])
 @Component({
-    selector: 'page-app',
-    templateUrl: 'app.component.html',
-    directives: [ROUTER_DIRECTIVES]
+    selector: 'website-app',
+    templateUrl: './app.component.html',
+    //directives: [ROUTER_DIRECTIVES]
 })
 export class AppComponent {
 

@@ -36,7 +36,7 @@ var jsNPMDependencies = [
     'angular2/bundles/router.dev.js'
 ]
 
-gulp.task('build:index', function(){
+gulp.task('build:assets', function(){
     var mappedPaths = jsNPMDependencies.map(file => {return path.resolve('node_modules', file)})
 
     //Let's copy our head dependencies into a dist/libs
@@ -46,7 +46,7 @@ gulp.task('build:index', function(){
     //Let's copy our index into dist
     //var copyIndex = gulp.src('client/index.html')
     //    .pipe(gulp.dest('dist'))
-    var copyIndex = gulp.src(['app/**/*.html', 'index.html'], { base : './' })
+    var copyIndex = gulp.src(['client/app/**/*', 'client/index.html', 'client/styles.css', '!client/app/**/*.ts'], { base : './client/' })
     .pipe(gulp.dest('dist'))
     return [copyJsNPMDependencies, copyIndex];
 });
@@ -61,9 +61,15 @@ gulp.task('build:app', function(){
 		.pipe(gulp.dest('dist'))
 });
 
+gulp.task('tslint', function() {
+  return gulp.src('client/app/**/*.ts')
+    .pipe(tslint())
+    .pipe(tslint.report('verbose'));
+});
+
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'build:server', 'build:index', 'build:app', callback);
+    runSequence('clean', 'build:server', 'build:assets', 'build:app', callback);
 });
 
 gulp.task('default', ['build']);
