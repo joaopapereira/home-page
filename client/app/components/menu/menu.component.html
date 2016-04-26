@@ -24,12 +24,17 @@
                   <a class="page-scroll" [routerLink]="['Portfolio']">Portfolio</a>
               </li>
               <li>
-                <dropdown>
-                  <li>
-                      <a class="page-scroll" [routerLink]="['Portfolio']">Portfolio1</a>
-                      <a class="page-scroll" [routerLink]="['Portfolio']">Portfolio2</a>
-                  </li>
-                </dropdown>
+                <span dropdown (on-toggle)="toggled($event)">
+                  <a href id="simple-dropdown" dropdownToggle>
+                    Click me for a dropdown, yo!
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="simple-dropdown">
+                    <li>
+                      <a class="dropdown-item" href="#">Choice 1</a>
+                      <a class="dropdown-item" href="#">Choice 2</a>
+                    </li>
+                  </ul>
+                </span>
               </li>
           </ul>
       </div>

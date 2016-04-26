@@ -1,5 +1,7 @@
 import {Component, OnInit} from 'angular2/core';
 import { RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
+import {CORE_DIRECTIVES} from 'angular2/common';
+import {DROPDOWN_DIRECTIVES} from 'ng2-bootstrap';
 @Component({
     selector: 'page-menu',
     templateUrl: 'app/components/menu/menu.component.html',
@@ -79,11 +81,25 @@ import { RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
       }
     }
     `],
-    directives: [RouterLink, RouterOutlet]
+    directives: [RouterLink, RouterOutlet, DROPDOWN_DIRECTIVES, CORE_DIRECTIVES]
 })
 export class MenuComponent  implements OnInit {
 
     constructor() { }
 
     ngOnInit() { }
+    public disabled:boolean = false;
+public status:{isopen:boolean} = {isopen: false};
+public items:Array<string> = ['The first choice!',
+  'And another choice for you.', 'but wait! A third!'];
+
+public toggled(open:boolean):void {
+  console.log('Dropdown is now: ', open);
+}
+
+public toggleDropdown($event:MouseEvent):void {
+  $event.preventDefault();
+  $event.stopPropagation();
+  this.status.isopen = !this.status.isopen;
+}
 }
