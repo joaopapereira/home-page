@@ -5,6 +5,7 @@ var app = express();
 
 app.use('/app', express.static(path.resolve(__dirname, 'app')));
 app.use('/libs', express.static(path.resolve(__dirname, 'libs')));
+app.use('/images', express.static(path.resolve(__dirname, 'images')));
 
 var renderIndex = (req: express.Request, res: express.Response) => {
     res.sendFile(path.resolve(__dirname, '../client/index.html'));

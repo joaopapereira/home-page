@@ -5,6 +5,8 @@ var ts = require('gulp-typescript');
 var del = require('del');
 var concat = require('gulp-concat')
 var runSequence = require('run-sequence');
+var scss = require('gulp-scss');
+var minifyCss = require('gulp-minify-css');
 
 // SERVER
 gulp.task('clean', function(){
@@ -33,7 +35,8 @@ var jsNPMDependencies = [
     'systemjs/dist/system.src.js',
     'rxjs/bundles/Rx.js',
     'angular2/bundles/angular2.dev.js',
-    'angular2/bundles/router.dev.js'
+    'angular2/bundles/router.dev.js',
+    'ng2-bootstrap/bundles/ng2-bootstrap.js'
 ]
 
 gulp.task('build:assets', function(){
@@ -43,12 +46,25 @@ gulp.task('build:assets', function(){
     var copyJsNPMDependencies = gulp.src(mappedPaths, {base:'node_modules'})
         .pipe(gulp.dest('dist/libs'))
 
-    //Let's copy our index into dist
-    //var copyIndex = gulp.src('client/index.html')
-    //    .pipe(gulp.dest('dist'))
-    var copyIndex = gulp.src(['client/app/**/*', 'client/index.html', 'client/styles.css', '!client/app/**/*.ts'], { base : './client/' })
+    var copyIndex = gulp.src(['client/app/**/*',
+                              'client/index.html',
+                              'client/**/*.css',
+                              '!client/app/**/*.ts',
+                              'client/images/**'], { base : './client/' })
     .pipe(gulp.dest('dist'))
     return [copyJsNPMDependencies, copyIndex];
+});
+
+gulp.task('build:scss', function () {
+  var appScss = ['**/*.scss', '!node_modules/**/*.*']
+  gulp.src(appScss)
+    .pipe(scss(
+            {"bundleExec": true}
+        ))
+    //.pipe(minifyCss({compatibility: 'ie8'})) // see the gulp-scss doc for more information on compatibilitymodes
+        .pipe(gulp.dest(function(file) {
+            return file.base; // because of Angular 2's encapsulation, it's natural to save the css where the scss-file was
+    }));
 });
 
 gulp.task('build:app', function(){
@@ -69,7 +85,13 @@ gulp.task('tslint', function() {
 
 
 gulp.task('build', function(callback){
-    runSequence('clean', 'build:server', 'build:assets', 'build:app', callback);
+    runSequence('clean', 'build:server', 'build:scss', 'build:assets', 'build:app', callback);
+});
+
+gulp.task('watch', ['build:app', 'build:scss'],function(){ // brackets makes sure we run ts and scss once before the watch starts
+    gulp.watch('client/app/**/*.ts', ['build:app']); // run the ts-task any time stuff in appJavascript changes
+    gulp.watch('client/app/**/*.scss', ['build:scss', 'build:assets']); // run the scss-task any time stuff in the appScss changes
+    gulp.watch('client/app/**/*.html', ['build:assets']); // run the scss-task any time stuff in the appScss changes
 });
 
 gulp.task('default', ['build']);
