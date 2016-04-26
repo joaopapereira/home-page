@@ -56,7 +56,6 @@ import { RouteConfig, RouterLink, RouterOutlet } from 'angular2/router';
     @media (min-width: 768px) {
       .navbar-default {
         background-color: transparent;
-        padding: 25px 0;
         -webkit-transition: padding 0.3s;
         -moz-transition: padding 0.3s;
         transition: padding 0.3s;
