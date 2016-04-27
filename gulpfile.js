@@ -36,7 +36,8 @@ var jsNPMDependencies = [
     'rxjs/bundles/Rx.js',
     'angular2/bundles/angular2.dev.js',
     'angular2/bundles/router.dev.js',
-    'ng2-bootstrap/bundles/ng2-bootstrap.js'
+    'ng2-bootstrap/bundles/ng2-bootstrap.js',
+    ''
 ]
 
 gulp.task('build:assets', function(){
@@ -91,7 +92,7 @@ gulp.task('build', function(callback){
 gulp.task('watch', ['build:app', 'build:scss'],function(){ // brackets makes sure we run ts and scss once before the watch starts
     gulp.watch('client/app/**/*.ts', ['build:app']); // run the ts-task any time stuff in appJavascript changes
     gulp.watch('client/app/**/*.scss', ['build:scss', 'build:assets']); // run the scss-task any time stuff in the appScss changes
-    gulp.watch('client/app/**/*.html', ['build:assets']); // run the scss-task any time stuff in the appScss changes
+    gulp.watch('client/**/*.html', ['build:assets']); // run the scss-task any time stuff in the appScss changes
 });
 
 gulp.task('default', ['build']);
