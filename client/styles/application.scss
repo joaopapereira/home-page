@@ -159,7 +159,7 @@ header {
     min-height: auto;
     @include background-cover;
     background-position: center;
-    background-image: url('../img/header.jpg');
+    background-image: url('../imgages/bg-img.jpg');
     text-align: center;
     color: $white;
     .header-content {
@@ -299,7 +299,13 @@ header {
 }
 
 // Button Styles
+.btn-default {
+  @include button-variant($theme-dark, $white, $white);
+}
 
+.btn-primary {
+  @include button-variant($white, $theme-primary, $theme-primary);
+}
 
 .btn {
     @include sans-serif-font;
