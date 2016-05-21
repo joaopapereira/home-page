@@ -55,8 +55,41 @@
                     <li>
                         <a class="page-scroll" href="#about">About</a>
                     </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle"
+                            data-toggle="dropdown"
+                            href="#">
+                                Portfolio
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                     <a class="page-scroll" href="#professional-life">Professional life</a>
+                                </li>
+                                <li>
+                                     <a class="page-scroll" href="#personal-projects">Projects</a>
+                                </li>
+                                <li>
+                                     <a class="page-scroll" href="#application-download">Applications</a>
+                                </li>
+                                <li>
+                                     <a class="page-scroll" href="#other-code">Other source code</a>
+                                </li>
+                            </ul>
+                        </li>
+                        
                     <li>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Portfolio</a>
+                            <ul class="dropdown-menu">
+                            <li>
+                                bamm
+                                </li>
+                            </ul>
+                        </li>
+                        </ul>
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -78,6 +111,45 @@
             </div>
         </div>
     </header>
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">About me</h2>
+                    <hr class="light">
+                    <div class="row">
+                      <div class="text-faded">
+                        <p>Hello and welcome to my web site</p>
+                          <img class="col-lg-3 img-responsive-right pull-right" src="img/me.jpg" width="300px">
+                        <p>My name is João Pereira and I am from one of the most beautifull cities in Portugal, a place called Aveiro.</p>
+                        <p>As some of you might know Aveiro is also know as Portuguese’s Venice due to its characteristic channels that
+                           spread accross the city in the Ria zone. The city centre is also bubling with nightlife and modern shopping
+                           centers. In recent years Aveiro has become the place of reference for Young and modern life with its
+                           renovated city centre not being yet overwelmed by the traffic and overpopulation you encounter in bigger
+                           cities. Here you can appreciate the fresh sea food everyday, being Aveiro a fishing city you have the most
+                           characteristic fish markets in the country and this reflects in the excellent restaurants that opened recently
+                           in the area. You can also combine the food experience with a Spa in the core of the city in the new Melia hotel.
+                           If you are curious you can take a look in <a href="http://www.aveiro.eu/default.asp?lg=en" target="new">here</a>
+                           or just go visit one day and enjoy the city that has converted
+                           from a fishing zone into a tourism spot very appreciated among the people who look for the best Portugal has to offer .</p>
+                        <p>The <a href="www.ua.pt" target="new">University of Aveiro</a>, a modern and cutting edge University recently
+                           ranked among the best european universities
+                           is located in the historic center of the city. I choosed this University to complete my Bachelor’s and Master’s degree
+                           in Computer Science because it forms the best telecom professionals and has a 100% empregability rate in the first year
+                           in the work market after ending the degree.</p>
+                        <p>After finishing my course I have departed my home town to work in other places. I have worked in Oporto, Leeds,
+                           Madrid and will be recently enlarging this list. As many like to say i one more child of the globalization
+                           where the world is my country.</p>
+                        <p>At this moment me and my lovely wife are working and living in Madrid enjoying the sybarite type of life the
+                           city has to offer. We both have excellent Jobs but are willing to look for new experiences abroad.</p>
+                        <p>But life is not only work. During my free time I like to watch series, play video games, listen to music and
+                           have a nice glass of wine during a nice meal. When i have some free time I love to cook.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="no-padding" id="portfolio">
         <div class="container">
@@ -89,7 +161,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
+            <div class="row" id="professional-life">
                 <div class="col-lg-12 text-center">
                     <h3 class="section-heading">Professional life</h3>
                     <hr class="primary">
@@ -116,14 +188,15 @@
                        <a href="www.ericsson.se" target="new">Ericsson Spain</a>.
                        Working there I came back to Networking on the DPI product SASN. I was part
                        of the team that took SASN in a new platform called SSR.</p>
-                    <p>Currently I am in Cincinnati, Ohio working for <a href="https://www.hubert.com" target="new">Hubert</a>
-                       as a web developer, playing with Spring/Java and Javascript.</p>
+                    <p>Currently I am in Cincinnati, Ohio working for 
+                        <a href="https://www.hubert.com" target="new">Hubert</a>
+                       as a web developer, playing with Spring/Java, Javascript, Jenkins, Ansible and Zabbix.</p>
                   </div>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-          <div class="row">
+          <div class="row" id="personal-projects">
               <div class="col-lg-12 text-center">
                   <h3 class="section-heading">Personal projects</h3>
                   <hr class="primary">
@@ -223,7 +296,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
+                    <a href="#science-dna-viewer" class="portfolio-box page-scroll">
                         <img src="img/portfolio/science-viewer-logo.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -238,7 +311,7 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
+                    <a href="#international-system-units" class="portfolio-box page-scroll">
                         <img src="img/portfolio/si-logo.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
@@ -254,102 +327,109 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/omniauth-logo.jpg" class="img-responsive" alt="">
+                        <img src="img/portfolio/av-logo.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    OmniAuth
+                                    Teaching assistant
                                 </div>
                                 <div class="project-name">
-                                    OmniAuth authentication plugin for launchpad
+                                    AV102 ESaaS: Managing Distributed Teams
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/science-viewer-logo.jpg" class="img-responsive" alt="">
+                    <a href="https://www.edx.org/xseries/agile-development-using-ruby-rails" class="portfolio-box" target="_new">
+                        <img src="img/portfolio/av-logo.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Science Viewer
+                                    Teaching assistant
                                 </div>
                                 <div class="project-name">
-                                    Analyse DNA and proteomic sequences and compare mutations in among any protein in the fasta format.
+                                    Agile Development Using Ruby on Rails
                                 </div>
                             </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <img src="img/portfolio/si-logo.jpg" class="img-responsive" alt="">
+                    <a href="https://www.edx.org/course/agile-development-using-ruby-rails-uc-berkeleyx-cs169-2x" class="portfolio-box" target="_new">
+                        <img src="img/portfolio/av-logo.jpg" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Internation System Unit
+                                    Teaching assistant
                                 </div>
                                 <div class="project-name">
-                                    Application that converts units and helps do some math
+                                    Agile Development Using Ruby on Rails - Advanced
                                 </div>
                             </div>
                         </div>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section>
+        <div class="container-fluid">
+          <div class="row" id="application-download">
+              <div class="col-lg-12 text-center">
+                  <h3 class="section-heading">Applications downloads</h3>
+                  <hr class="primary">
+              </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-12 text-center" id="science-dna-viewer">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-flask wow bounceIn text-primary"></i>
+                            <h3>Science DNA Viewer</h3>
+                            <p class="text-muted">
+                                High throughput analysis program to analyse DNA and proteomic sequences and compare mutations in among any protein in the fasta format.
+                            </p>
+                            <p>Source code for version 1.0.0 can be found at 
+                                <a href="https://bitbucket.org/jpapereira/scienceviewer" target="_new"><i class="fa fa-bitbucket"></i></a>
+                            </p>
+                            <p>Download the application and start using it right now at 
+                                <a href="http://jpereira.co.uk/science-dna-viewer/science-dna-viewer.jar">
+                                    <i class="fa fa-cloud-download"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 text-center" id="international-system-units">
+                        <div class="service-box">
+                            <i class="fa fa-4x fa-university wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                            <h3>International Unit Viewer</h3>
+                            <p class="text-muted">Simple application that can be used to convert between ISU Units and do some calculation with them</p>
+                            <p>Source code for version 1.0.0 can be found at 
+                                <a href="https://github.com/joaopapereira/international-system-units/releases/tag/v0.1.1" target="_new"><i class="fa fa-github"></i></a>
+                            </p>
+                            <p>Download the application and start using it right now at 
+                                <a href="http://jpereira.co.uk/international-system-units-viewer/international-system-units-viewer.jar">
+                                    <i class="fa fa-cloud-download"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <aside class="bg-dark">
-        <div class="container text-center">
+        <div class="container text-center" id="other-code">
             <div class="call-to-action">
-                <h2>Coding examples</h2>
+                <h2>Other coding examples</h2>
                 <p>My github account as examples of applications, snippets of code, libraries and much more</p>
                 <a href="https://www.github.com/joaopapereira" class="btn btn-default btn-xl wow tada">GitHub</a>
             </div>
         </div>
     </aside>
-
-    <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">About me</h2>
-                    <hr class="light">
-                    <div class="row">
-                      <div class="text-faded">
-                        <p>Hello and welcome to my web site</p>
-                          <img class="col-lg-3 img-responsive-right pull-right" src="img/me.jpg" width="300px">
-                        <p>My name is João Pereira and I am from one of the most beautifull cities in Portugal, a place called Aveiro.</p>
-                        <p>As some of you might know Aveiro is also know as Portuguese’s Venice due to its characteristic channels that
-                           spread accross the city in the Ria zone. The city centre is also bubling with nightlife and modern shopping
-                           centers. In recent years Aveiro has become the place of reference for Young and modern life with its
-                           renovated city centre not being yet overwelmed by the traffic and overpopulation you encounter in bigger
-                           cities. Here you can appreciate the fresh sea food everyday, being Aveiro a fishing city you have the most
-                           characteristic fish markets in the country and this reflects in the excellent restaurants that opened recently
-                           in the area. You can also combine the food experience with a Spa in the core of the city in the new Melia hotel.
-                           If you are curious you can take a look in <a href="http://www.aveiro.eu/default.asp?lg=en" target="new">here</a>
-                           or just go visit one day and enjoy the city that has converted
-                           from a fishing zone into a tourism spot very appreciated among the people who look for the best Portugal has to offer .</p>
-                        <p>The <a href="www.ua.pt" target="new">University of Aveiro</a>, a modern and cutting edge University recently
-                           ranked among the best european universities
-                           is located in the historic center of the city. I choosed this University to complete my Bachelor’s and Master’s degree
-                           in Computer Science because it forms the best telecom professionals and has a 100% empregability rate in the first year
-                           in the work market after ending the degree.</p>
-                        <p>After finishing my course I have departed my home town to work in other places. I have worked in Oporto, Leeds,
-                           Madrid and will be recently enlarging this list. As many like to say i one more child of the globalization
-                           where the world is my country.</p>
-                        <p>At this moment me and my lovely wife are working and living in Madrid enjoying the sybarite type of life the
-                           city has to offer. We both have excellent Jobs but are willing to look for new experiences abroad.</p>
-                        <p>But life is not only work. During my free time I like to watch series, play video games, listen to music and
-                           have a nice glass of wine during a nice meal. When i have some free time I love to cook.</p>
-                      </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
     <section id="contact">
@@ -373,7 +453,7 @@
                   </div>
                   <div class="col-lg-2 col-lg-offset-1 text-center">
                       <a href="//plus.google.com/u/0/113496476839486873432?prsrc=3" rel="publisher" target="new" style="text-decoration:none;">
-                        <img src="//ssl.gstatic.com/images/icons/gplus-64.png" alt="Google+" class="img-responsive wow bounceIn">
+                        <img src="img/google+.png" alt="Google+" class="img-responsive wow bounceIn">
                       </a>
                   </div>
                   <div class="col-lg-2 col-lg-offset-1 text-center">
